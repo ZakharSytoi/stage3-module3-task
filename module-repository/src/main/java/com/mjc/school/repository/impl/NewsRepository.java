@@ -71,23 +71,23 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
         Root<NewsModel> root = query.from(NewsModel.class);
 
         List<Predicate> predicates = new ArrayList<>();
-        if (tagName != null || tagsIds != null) {
+        if (tagName != null && tagName.length() != 0 || tagsIds != null && tagsIds.size() != 0) {
             Join<TagModel, NewsModel> newsTags = root.join("tags");
-            if (tagName != null) {
+            if (tagName != null && tagName.length() != 0) {
                 predicates.add(newsTags.get("name").in(tagName));
             }
-            if (tagsIds != null) {
+            if (tagsIds != null && tagsIds.size() != 0) {
                 predicates.add(newsTags.get("id").in(tagsIds));
             }
         }
-        if (authorName != null) {
+        if (authorName != null && authorName.length() != 0) {
             Join<AuthorModel, NewsModel> newsAuthor = root.join("author");
             predicates.add(criteriaBuilder.equal(newsAuthor.get("name"), authorName));
         }
-        if (title != null) {
+        if (title != null && title.length() != 0) {
             predicates.add(criteriaBuilder.like(root.get("title"), "%" + title + "%"));
         }
-        if (content != null) {
+        if (content != null && content.length() != 0) {
             predicates.add(criteriaBuilder.like(root.get("content"), "%" + content + "%"));
         }
         query.select(root).distinct(true).where(predicates.toArray(new Predicate[0]));

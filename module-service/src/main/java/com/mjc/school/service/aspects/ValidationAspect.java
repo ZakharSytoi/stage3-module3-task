@@ -137,32 +137,43 @@ public class ValidationAspect {
             noArgsFlag = false;
         }
         if(args[1] != null && args[1] instanceof String str){
-            validateString(str,
-                    TAG_NAME,
-                    TAG_NAME_MIN_LENGTH,
-                    TAG_NAME_MAX_LENGTH);
-            noArgsFlag = false;
+            if(str.length() != 0) {
+                validateString(str,
+                        TAG_NAME,
+                        TAG_NAME_MIN_LENGTH,
+                        TAG_NAME_MAX_LENGTH);
+                noArgsFlag = false;
+            }
+
         }
         if(args[2] != null && args[2] instanceof String str){
-            validateString(str,
-                    AUTHOR_NAME,
-                    AUTHOR_NAME_MIN_LENGTH,
-                    AUTHOR_NAME_MAX_LENGTH);
-            noArgsFlag = false;
+            if(str.length() != 0) {
+                validateString(str,
+                        AUTHOR_NAME,
+                        AUTHOR_NAME_MIN_LENGTH,
+                        AUTHOR_NAME_MAX_LENGTH);
+                noArgsFlag = false;
+            }
         }
         if(args[3] != null && args[3] instanceof String str){
-            validateString(str,
-                    NEWS_TITLE,
-                    NEWS_TITLE_MIN_LENGTH,
-                    NEWS_TITLE_MAX_LENGTH);
-            noArgsFlag = false;
+            if(str.length() != 0) {
+                validateString(str,
+                        NEWS_TITLE,
+                        NEWS_TITLE_MIN_LENGTH,
+                        NEWS_TITLE_MAX_LENGTH);
+                noArgsFlag = false;
+            }
+
         }
         if(args[4] != null && args[4] instanceof String str){
-            validateString(str,
-                    NEWS_CONTENT,
-                    NEWS_CONTENT_MIN_LENGTH,
-                    NEWS_CONTENT_MAX_LENGTH);
-            noArgsFlag = false;
+            if(str.length() != 0) {
+                validateString(str,
+                        NEWS_CONTENT,
+                        NEWS_CONTENT_MIN_LENGTH,
+                        NEWS_CONTENT_MAX_LENGTH);
+                noArgsFlag = false;
+            }
+
         }
         if(noArgsFlag) throw new NotFoundException(String.format(
                 String.valueOf(NO_VALID_ARGUMENT_GIVEN.getMessage())));
