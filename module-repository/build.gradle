@@ -1,0 +1,4 @@
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.h2database:h2:2.1.214'
+}
